@@ -36,6 +36,15 @@ Prediction and Post-Processing:
 Use the trained model to make predictions.
 Apply any additional rules for final decision-making (e.g., verifying the account's authenticity).
 
+Implementing WebScrapping:
+    I used BeautifulSoup for web scraping to retrieve Instagram profile details such as the profile picture, number of posts, number of followers, and number of followings because it allows easy extraction of structured data from web pages. 
+    BeautifulSoup efficiently parses HTML and XML documents, helping me locate and extract the required data from Instagram's profile page. 
+    This approach is useful when an API is unavailable or has restrictions, making web scraping a valuable alternative for gathering public profile information.
+
+
+       
+
+
 
 
 
