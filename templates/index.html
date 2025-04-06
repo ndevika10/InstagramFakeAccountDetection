@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Instagram Profile Checker</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <script>
+        function clearPreviousResult() {
+            document.getElementById('result-container').innerHTML = ""; // Clears previous result
+        }
+    </script>
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar">
+        <ul>
+            <li><a href="/" class="active">Home</a></li>
+            <li><a href="#">Login</a></li>
+            <li><a href="#">SignUp</a></li>
+            <li><a href="#">About Us</a></li>
+        </ul>
+    </nav>
+
+    <!-- Header Section -->
+    <div class="header">
+        <h1>Social Media Profile</h1>
+        <h2><span class="auth">Authentication Portal</span></h2>
+        <p>Let's Secure your online network</p>
+    </div>
+
+    <!-- Card for Username Input -->
+    <div class="card">
+        <h2>Check Instagram Profile</h2>
+        <form action="/check_profile" method="post" onsubmit="clearPreviousResult()">
+            <label for="username">Enter Instagram Username:</label>
+            <input type="text" id="username" name="username" placeholder="Enter username" required>
+            <button type="submit" class="gradient-btn">Check</button>
+        </form>
+    </div>
+
+    <!-- Result Container (Initially Empty) -->
+    <div id="result-container">
+        {% if result and result.exists %}
+        <div class="card">
+            <h2>Result</h2>
+            <p class="success"><strong>✅ Instagram Account Exists!</strong></p>
+            <img src="{{ result.profile_picture }}" alt="Profile Picture" class="profile-pic">
+            <p><strong>📛 Account Name:</strong> {{ username }}</p> <!-- Display Account Name -->
+            <p><strong>📌 Bio:</strong> {{ result.bio }}</p>
+        </div>
+        <div class="card">
+            <form action="/analyze" method="post">
+                <input type="hidden" name="username" value="{{ username }}">
+                <input type="hidden" name="profile_picture" value="{{ result.profile_picture }}">
+                <button type="submit" class="gradient-btn">Proceed to Account Classification</button>
+            </form>
+        </div>
+        {% elif result and not result.exists %}
+        <div class="card">
+            <p class="error"><strong>❌ Invalid Instagram Username. Please enter a valid username.</strong></p>
+        </div>
+        {% endif %}
+    </div>
+
+</body>
+</html>
+
+
+

@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Analyze Instagram Profile</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='analyzestyle.css') }}">
+    
+</head>
+<body>
+    
+
+    <nav class="navbar">
+        <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="#">Login</a></li>
+            <li><a href="#">SignUp</a></li>
+            <li><a href="#">About Us</a></li>
+        </ul>
+    </nav>
+
+    <div class="card">
+        <h2>Analyze Instagram Profile</h2>
+
+        <!-- Display Profile Picture and Username -->
+        <img src="{{ profile_picture }}" alt="Profile Picture" class="profile-pic">
+        <p><strong>👤 Username:</strong> {{ username }}</p>
+
+
+        <form action="/predict" method="post">
+            <div class="container mt-4">
+            <input type="hidden" name="username" value="{{ username }}">
+
+            <div class="form-group">
+                <label for="nmedia">Enter the No. of Posts:</label>
+                <input type="number" id="nmedia" name="nmedia" required>
+            </div>
+            <div class="form-group">
+                <label for="nfollower">Enter the No. of Followers:</label>
+                <input type="number" id="nfollower" name="nfollower" required>
+            </div>
+            <div class="form-group">
+                <label for="nfollowing">Enter the No. of Following:</label>
+                <input type="number" id="nfollowing" name="nfollowing" required>
+            </div>
+            
+            <div class="form-group">
+                <label>Does the Account have a Profile Picture?</label>
+                <div class="radio-group">
+                    <input type="radio" id="pic_yes" name="pic" value="1" required>
+                    <label for="pic_yes">Yes</label>
+
+                    <input type="radio" id="pic_no" name="pic" value="0">
+                    <label for="pic_no">No</label>
+                </div>
+            </div>
+            <div class="form-group">
+                <label>Do You Follow This Account?</label>
+                <div class="radio-group">
+                    <input type="radio" id="followrel_yes" name="followrel" value="yes" required>
+                    <label for="followrel_yes">Yes</label>
+
+                    <input type="radio" id="followrel_no" name="followrel" value="no">
+                    <label for="followrel_no">No</label>
+                </div>
+            </div>
+            <div class="form-group">
+                <label>If You Follow the Account, Does It Have Highlights?</label>
+                <div class="radio-group">
+                    <input type="radio" id="acHighlight_yes" name="acHighlight" value="yes" required>
+                    <label for="acHighlight_yes">Yes</label>
+
+                    <input type="radio" id="acHighlight_no" name="acHighlight" value="no">
+                    <label for="acHighlight_no">No</label>
+                </div>
+            </div>
+            <div class="form-group">
+                <label>If You Follow the Account, Does It Frequently Post Stories?</label>
+                <div class="radio-group">
+                    <input type="radio" id="avgtime_yes" name="avgtime" value="yes" required>
+                    <label for="avgtime_yes">Yes</label>
+
+                    <input type="radio" id="avgtime_no" name="avgtime" value="no">
+                    <label for="avgtime_no">No</label>
+                </div>
+            </div>
+            <div class="form-group">
+                <label>Does the Account Have a "New" Tag?</label>
+                <div class="radio-group">
+                    <input type="radio" id="newTag_yes" name="newTag" value="yes" required>
+                    <label for="newTag_yes">Yes</label>
+
+                    <input type="radio" id="newTag_no" name="newTag" value="no">
+                    <label for="newTag_no">No</label>
+                </div>
+            </div>
+            <button type="submit" class="gradient-btn">Submit & Predict</button>
+        </div>
+        </form>
+    </div>
+</body>
+</html>
