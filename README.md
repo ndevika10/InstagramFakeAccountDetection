@@ -19,15 +19,19 @@ Introduction:
 Data Preprocessing:
 Clean data by handling missing values.
 Select relevant features and normalize them for better model performance.
+
 Model Training:
 Initialize the XGBoost model with key parameters (like learning rate, max depth, number of trees).
 Train the model using the training dataset, where each tree corrects the errors of the previous one.
+
 Model Evaluation:
 Evaluate the model's performance using metrics like accuracy and precision.
 Make predictions on test data to assess how well the model generalizes.
+
 Hyperparameter Tuning:
 Optimize the model's parameters (e.g., learning rate, tree depth) for better accuracy.
 Use techniques like grid search to find the best hyperparameters.
+
 Prediction and Post-Processing:
 Use the trained model to make predictions.
 Apply any additional rules for final decision-making (e.g., verifying the account's authenticity).
